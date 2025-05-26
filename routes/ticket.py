@@ -44,3 +44,24 @@ def create_ticket(current_user):
     db.session.commit()
 
     return jsonify({'message': 'Ticket created successfully', 'ticket': new_ticket.to_dict()}), 201
+
+@ticket_bp.route('/tickets', methods=['GET'])
+@token_required
+def get_all_tickets(current_user):
+    # TODO: Add pagination for scalability
+    tickets = Ticket.query.order_by(Ticket.created_at.desc()).all()
+    return jsonify([ticket.to_dict() for ticket in tickets]), 200
+
+@ticket_bp.route('/tickets/<int:ticket_id>', methods=['GET'])
+@token_required
+def get_ticket_by_id(current_user, ticket_id):
+    ticket = Ticket.query.get(ticket_id)
+    if not ticket:
+        return jsonify({'message': 'Ticket not found'}), 404
+    
+    # Optional: Add authorization check if only certain users can view certain tickets
+    # e.g., if current_user.id != ticket.user_id and (not ticket.assignee_id or current_user.id != ticket.assignee_id):
+    #     if not getattr(current_user, 'is_admin', False): # Assuming an admin role
+    #         return jsonify({'message': 'You are not authorized to view this ticket'}), 403
+            
+    return jsonify(ticket.to_dict()), 200

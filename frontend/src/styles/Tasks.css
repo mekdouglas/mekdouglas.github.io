@@ -1,0 +1,164 @@
+/* Styles for Task Components */
+
+/* TaskList Container */
+.task-list-container {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: var(--background-color); /* Light background for the whole task section */
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.task-list-container h3 { /* "Tasks for this Ticket" */
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.task-list-container h4 { /* "Add New Task" in CreateTaskForm */
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+  font-size: 1.15rem; /* Slightly smaller than h3 */
+}
+
+/* CreateTaskForm */
+.create-task-form {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--surface-color); /* Form on a white surface */
+}
+
+.create-task-form label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500; /* Medium weight for labels */
+  font-size: 0.9em;
+  color: var(--text-secondary-color);
+}
+.create-task-form label span[style*="color: red"] { /* For asterisk */
+    color: var(--error-color);
+}
+
+
+/* Inputs and Selects in CreateTaskForm will use global styles from index.css */
+/* We can add specific margins if needed */
+.create-task-form input[type="text"],
+.create-task-form input[type="date"],
+.create-task-form input[type="number"],
+.create-task-form textarea,
+.create-task-form select {
+  margin-bottom: 0.75rem; /* Consistent margin for form elements */
+}
+
+
+.create-task-form button[type="submit"] {
+  /* Uses global button styles */
+  background-color: var(--success-color); /* Green for create actions */
+  border-color: var(--success-color);
+  /* color: var(--surface-color); is default */
+}
+.create-task-form button[type="submit"]:hover {
+  background-color: darken(var(--success-color), 7.5%);
+  border-color: darken(var(--success-color), 10%);
+}
+.create-task-form button[type="submit"]:disabled {
+  /* Uses global disabled styles */
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+
+/* TaskItem */
+.task-item {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.task-item h5 { /* Task Title */
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--primary-color); 
+  font-size: 1.1em;
+}
+
+.task-item p { /* Task Description */
+  font-size: 0.9em;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.task-item .details-grid { 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  font-size: 0.85em;
+  color: var(--text-secondary-color);
+  margin-bottom: 0.75rem;
+}
+.task-item .details-grid strong {
+  color: var(--text-color); /* Make keys in grid slightly darker */
+  font-weight: 500;
+}
+
+
+.task-item .actions { 
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border-color);
+}
+
+.task-item .actions label {
+  margin-right: 0.25rem;
+  font-weight: 500; /* Medium weight */
+  font-size: 0.9em;
+  color: var(--text-color);
+}
+
+.task-item .actions select {
+  /* Uses global select styles */
+  padding: 0.4rem 0.6rem; /* Slightly smaller padding for inline select */
+  font-size: 0.9em;
+  margin-bottom: 0; /* Remove default margin from global styles */
+}
+
+.task-item .actions button { /* Delete button */
+  /* Uses global button styles, but override for error color */
+  background-color: var(--error-color);
+  border-color: var(--error-color);
+  font-size: 0.9em;
+  padding: 0.4rem 0.8rem; /* Smaller padding */
+}
+.task-item .actions button:hover {
+  background-color: darken(var(--error-color), 7.5%);
+  border-color: darken(var(--error-color), 10%);
+}
+
+/* General utility for error messages used within task components */
+.task-list-container .error-message, 
+.create-task-form .error-message { /* Scoped error message */
+  color: var(--error-color);
+  background-color: lighten(var(--error-color), 35%);
+  border: 1px solid lighten(var(--error-color), 20%);
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius);
+  font-size: 0.9em;
+}
+
+/* General utility for loading messages */
+.task-list-container .loading-message {
+  color: var(--text-secondary-color);
+  font-style: italic;
+  padding: 0.75rem 0;
+}

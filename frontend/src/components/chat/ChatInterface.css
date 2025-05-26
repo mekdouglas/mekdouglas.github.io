@@ -1,0 +1,188 @@
+.chat-interface {
+  display: flex;
+  flex-direction: column;
+  height: auto; 
+  max-height: 70vh; /* Max height of chat, adjust as needed */
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background-color: var(--surface-color);
+  box-shadow: var(--box-shadow);
+}
+
+.messages-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Spacing between messages */
+  background-color: var(--background-color); /* Slightly different background for message area */
+}
+
+.message-item {
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--border-radius); /* Use global border-radius */
+  max-width: 75%; /* Max width of message bubble */
+  word-wrap: break-word;
+  line-height: 1.4;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.message-item.current-user {
+  background-color: var(--primary-color);
+  color: var(--surface-color); /* Text on primary background */
+  align-self: flex-end;
+  border-bottom-right-radius: 0.15rem; /* Slightly flatter edge for "tail" effect */
+}
+
+.message-item.other-user {
+  background-color: var(--surface-color); /* White for other users */
+  color: var(--text-color);
+  align-self: flex-start;
+  border: 1px solid var(--border-color); /* Subtle border for other user messages */
+  border-bottom-left-radius: 0.15rem; /* Slightly flatter edge */
+}
+
+.message-sender {
+  font-weight: 600; /* Bolder sender name */
+  font-size: 0.85em;
+  margin-bottom: 0.25rem;
+  color: inherit; /* Inherits from .message-item for contrast */
+}
+.message-item.other-user .message-sender {
+  color: var(--primary-color); /* Make sender name primary color for other users */
+}
+
+
+.message-content {
+  font-size: 0.95em;
+}
+
+.message-media img {
+  max-width: 300px; /* Max width for images */
+  max-height: 250px; /* Max height for images */
+  border-radius: var(--border-radius);
+  margin-top: 0.5rem;
+  display: block; /* Ensure it's block for margin auto to work if needed */
+  border: 1px solid var(--border-color);
+}
+.message-media audio {
+  width: 100%; /* Make audio controls take full width of message bubble */
+  margin-top: 0.5rem;
+  min-width: 250px; /* Ensure audio player is not too small */
+}
+
+
+.message-timestamp {
+  font-size: 0.75em;
+  color: var(--text-secondary-color);
+  margin-top: 0.3rem;
+  text-align: right;
+  display: block; /* Ensure it takes its own line if needed */
+}
+.message-item.current-user .message-timestamp {
+  color: rgba(255, 255, 255, 0.7); /* Lighter timestamp for current user's messages */
+}
+
+.message-mentions {
+  font-size: 0.8em;
+  color: var(--secondary-color);
+  margin-top: 0.25rem;
+  opacity: 0.8;
+}
+.message-item.current-user .message-mentions {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+.message-input-form {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--surface-color);
+}
+
+.message-input {
+  flex-grow: 1;
+  padding: var(--input-padding-y) var(--input-padding-x);
+  border: 1px solid var(--border-color);
+  border-radius: calc(var(--border-radius) * 1.5); /* More rounded for chat input */
+  margin-right: 0.5rem;
+  font-size: 0.95em;
+  /* Global styles for input already applied */
+}
+
+.file-upload-label {
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1.3rem; /* Larger icon */
+  color: var(--secondary-color);
+  transition: color 0.2s ease;
+}
+.file-upload-label:hover {
+  color: var(--primary-color);
+}
+
+.send-button {
+  /* Uses global button styles from index.css */
+  padding: var(--input-padding-y) 1rem; /* Match input height */
+  border-radius: calc(var(--border-radius) * 1.5); /* More rounded */
+  /* min-width: 80px; */ /* Ensure send button has a decent width */
+}
+.send-button:disabled {
+  background-color: var(--secondary-color);
+  opacity: 0.7;
+}
+
+
+/* File Preview Area */
+.file-preview {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 1rem 0.5rem; /* Add some padding below messages-container and above form */
+  background-color: var(--surface-color); /* Match form background */
+  border-top: 1px dashed var(--border-color); /* Optional separator */
+}
+.file-preview img {
+  max-width: 80px;
+  max-height: 80px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+.file-preview p { /* For audio file name */
+  font-size: 0.85em;
+  color: var(--text-secondary-color);
+  margin: 0;
+}
+.clear-file-button {
+  background-color: var(--error-color);
+  color: var(--surface-color);
+  font-size: 0.75em;
+  padding: 0.25rem 0.5rem;
+  /* Uses global button styles for border-radius etc. */
+}
+.clear-file-button:hover {
+  background-color: darken(var(--error-color), 10%);
+}
+
+
+/* General utility for error messages in chat */
+.chat-interface .error-message {
+  color: var(--error-color);
+  background-color: lighten(var(--error-color), 35%);
+  border: 1px solid lighten(var(--error-color), 20%);
+  padding: 0.75rem;
+  margin: 0 1rem 0.5rem;
+  border-radius: var(--border-radius);
+  font-size: 0.9em;
+}
+.chat-interface .loading-message,
+.chat-interface .no-messages-prompt {
+  text-align: center;
+  color: var(--text-secondary-color);
+  font-size: 0.9em;
+  padding: 1rem;
+}

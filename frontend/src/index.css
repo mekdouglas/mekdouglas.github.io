@@ -1,0 +1,296 @@
+:root {
+  /* Color Scheme */
+  --primary-color: #007bff; /* Blue */
+  --secondary-color: #6c757d; /* Gray */
+  --background-color: #f8f9fa; /* Light Gray */
+  --surface-color: #ffffff; /* White */
+  --text-color: #212529; /* Dark Gray */
+  --text-secondary-color: #6c757d; /* Medium Gray */
+  --error-color: #dc3545; /* Red */
+  --success-color: #28a745; /* Green */
+  --border-color: #dee2e6; /* Light border color */
+
+  /* Fonts */
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* UI Elements */
+  --border-radius: 0.3rem; /* Slightly more rounded than default bootstrap */
+  --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --input-padding-y: 0.5rem;
+  --input-padding-x: 0.75rem;
+  --button-padding-y: 0.5rem;
+  --button-padding-x: 1rem;
+}
+
+/* Basic Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family-sans-serif);
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-sans-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text-color); /* Or a slightly darker shade if preferred */
+}
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  background-color: transparent;
+}
+a:hover {
+  color: darken(var(--primary-color), 10%);
+  text-decoration: underline;
+}
+
+/* Buttons */
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  display: inline-block;
+  font-weight: 400;
+  color: var(--surface-color);
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: var(--button-padding-y) var(--button-padding-x);
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: var(--border-radius);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+button:hover {
+  background-color: darken(var(--primary-color), 7.5%);
+  border-color: darken(var(--primary-color), 10%);
+}
+button:focus, button.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(var(--primary-color), 0.5); /* Simplified focus, needs RGB version of primary color */
+}
+button:disabled, button.disabled {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Forms */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="search"],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  padding: var(--input-padding-y) var(--input-padding-x);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--surface-color);
+  background-clip: padding-box;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-bottom: 0.75rem; /* Default margin */
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+select:focus {
+  color: var(--text-color);
+  background-color: var(--surface-color);
+  border-color: lighten(var(--primary-color), 25%);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(var(--primary-color), 0.25); /* Simplified focus */
+}
+textarea {
+  resize: vertical;
+  min-height: calc(1.5em + var(--input-padding-y) * 2 + 2px); /* Default to ~3 lines */
+}
+select {
+  height: calc(1.5em + var(--input-padding-y) * 2 + 2px);
+}
+
+
+/* Code */
+code, kbd, pre, samp {
+  font-family: var(--font-family-monospace);
+  font-size: 1em; /* Or slightly smaller like 0.875em */
+}
+pre {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow: auto;
+  color: var(--text-color);
+  background-color: var(--surface-color);
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+/* Default App container - if needed */
+#root {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* min-height: 100vh; */
+}
+
+/* Specific overrides for header */
+header {
+  background-color: var(--primary-color); 
+  color: var(--surface-color); 
+  padding: 0.75rem 1.5rem; /* Slightly less vertical padding */
+  display: flex; /* Enable flexbox for alignment */
+  justify-content: space-between; /* Space out logo and nav */
+  align-items: center; /* Vertically align items */
+  box-shadow: var(--box-shadow);
+}
+
+.header-logo-link {
+  color: var(--surface-color);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.header-logo-link:hover {
+  text-decoration: none; /* No underline for logo */
+  opacity: 0.9;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Spacing between nav items */
+}
+
+.header-nav-link {
+  color: var(--surface-color);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s ease;
+}
+.header-nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover for links */
+  text-decoration: none;
+}
+
+.header-nav-button.logout-button {
+  /* Uses global button styles but with specific header context */
+  background-color: transparent;
+  color: var(--surface-color);
+  border: 1px solid var(--surface-color);
+  padding: var(--button-padding-y) var(--button-padding-x); /* Use global button padding */
+}
+.header-nav-button.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--surface-color); /* Keep border color or make it slightly darker if needed */
+}
+
+
+main {
+  padding: 1.5rem; /* Consistent padding */
+  /* background-color: var(--surface-color); */ /* Main content area might be surface or background */
+  flex-grow: 1; /* If #root is flex column */
+}
+
+/* Page title styling */
+h2 { /* Already defined above, this is for existing .page-title class if any */
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+/* Utility classes for error and success messages */
+.error-text {
+  color: var(--error-color);
+  font-size: 0.875em;
+}
+.success-text {
+  color: var(--success-color);
+  font-size: 0.875em;
+}
+
+/* Helper function for SASS-like darken/lighten - not directly usable in CSS variables */
+/* For :hover states, define specific colors or use filter: brightness() if appropriate */
+/* Example: button:hover { filter: brightness(90%); } */
+
+/* Specific styles for login/register forms as they were styled inline */
+.auth-form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 2rem;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+.auth-form-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.auth-form-container label {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 500;
+}
+.auth-form-container button[type="submit"] {
+  width: 100%;
+  margin-top: 0.5rem; /* Reduced margin-top as inputs have margin-bottom */
+}
+.auth-form-container .form-footer-link {
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9em;
+}

@@ -1,0 +1,186 @@
+/* Styles for Notification Components */
+
+/* NotificationBell Container */
+.notification-bell-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* NotificationBell Button */
+.notification-bell-button {
+  background: none;
+  border: none;
+  color: var(--surface-color); /* Assuming bell is on a dark header */
+  font-size: 1.5rem; 
+  cursor: pointer;
+  position: relative;
+  padding: 5px;
+}
+.notification-bell-button:hover {
+  opacity: 0.8;
+}
+
+/* Notification Badge */
+.notification-badge {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: var(--error-color); /* Use error color for urgency */
+  color: var(--surface-color);
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  line-height: 1;
+  min-width: 16px;
+  text-align: center;
+}
+
+/* Notification Dropdown */
+.notification-dropdown {
+  position: absolute;
+  top: 100%; 
+  right: 0;
+  width: 350px; 
+  max-height: 400px; 
+  overflow-y: auto;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  z-index: 1000; 
+  margin-top: 5px; 
+}
+
+/* NotificationList */
+.notification-list {
+  padding: 0;
+}
+.notification-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-list-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  text-align: right;
+}
+
+.mark-all-read-button {
+  /* Uses global button styles from index.css, can override if needed */
+  background-color: var(--primary-color);
+  color: var(--surface-color);
+  font-size: 0.85em;
+  padding: 0.35rem 0.7rem;
+}
+.mark-all-read-button:hover {
+  background-color: darken(var(--primary-color), 10%);
+}
+
+.notification-list-empty {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--text-secondary-color);
+}
+
+/* NotificationItem */
+.notification-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  cursor: default; 
+}
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-item.unread {
+  background-color: lighten(var(--primary-color), 40%); /* Very light primary for unread */
+  font-weight: 600; 
+}
+.notification-item.read {
+  background-color: var(--surface-color);
+  color: var(--text-secondary-color); 
+}
+
+.notification-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.notification-type {
+  font-size: 0.75em;
+  color: var(--text-secondary-color);
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
+.notification-item.unread .notification-type {
+  color: var(--secondary-color); /* Slightly darker for unread type */
+}
+
+
+.notification-message {
+  font-size: 0.9em;
+  margin-bottom: 4px;
+  line-height: 1.4;
+  color: var(--text-color);
+}
+.notification-item.read .notification-message {
+  color: var(--text-secondary-color);
+}
+.notification-link {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+.notification-link:hover {
+  text-decoration: underline;
+}
+
+
+.notification-timestamp {
+  font-size: 0.75em;
+  color: var(--text-secondary-color);
+}
+.notification-item.unread .notification-timestamp {
+  color: var(--secondary-color);
+}
+
+
+.mark-read-button {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary-color);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 0.9em;
+  line-height: 20px; 
+  text-align: center;
+  cursor: pointer;
+  margin-left: 10px;
+  flex-shrink: 0; 
+}
+.mark-read-button:hover {
+  background-color: var(--background-color);
+  border-color: var(--secondary-color);
+}
+
+/* General loading/error messages within dropdown */
+.notification-dropdown .loading-message {
+  padding: 1rem;
+  text-align: center;
+  font-style: italic;
+  color: var(--text-secondary-color);
+}
+.notification-dropdown .error-message {
+  padding: 1rem;
+  text-align: center;
+  color: var(--error-color);
+  background-color: lighten(var(--error-color), 35%);
+  border-bottom: 1px solid var(--border-color);
+}
